@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/test")
+@RequestMapping("/api/test")
 public class TestController {
 
     private final static Log log = LogFactory.getLog(TestController.class);

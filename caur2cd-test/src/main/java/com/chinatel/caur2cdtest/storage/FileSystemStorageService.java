@@ -3,14 +3,17 @@ package com.chinatel.caur2cdtest.storage;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
@@ -21,6 +24,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileSystemStorageService implements StorageService {
+
+    private static final Log log = LogFactory.getLog(StorageService.class);
 
     private final Path rootLocation;
 
@@ -53,28 +58,36 @@ public class FileSystemStorageService implements StorageService {
 
     @Override
     public void store(InputStream inputStream, String filename) {
-        String folder = filename.substring(0, filename.indexOf("\\"));
         try {
-            File dir = new File(this.rootLocation + "\\" + folder);
-            if (!dir.exists()) {
-                dir.mkdirs();
+            Matcher m = Pattern.compile(".*/").matcher(filename);
+            if (m.find()) {
+                String folder = m.group(0);
+                File dir = new File(this.rootLocation + "/" + folder);
+                if (!dir.exists()) {
+                    dir.mkdirs();
+                }
+                int len = 0;
+                byte[] buf = new byte[1024];
+                len = inputStream.read(buf, 0, 1024);
+                if (len < 0) {
+                    throw new StorageException("Failed to store empty file " + filename);
+                }
+                if (filename.contains("..")) {
+                    // This is a security check
+                    throw new StorageException(
+                            "Cannot store file with relative path outside current directory "
+                                    + filename);
+                }
+                Files.copy(inputStream, this.rootLocation.resolve(filename),
+                        StandardCopyOption.REPLACE_EXISTING);
+            } else {
+                log.error("Regex is error");
+                throw new Exception("Regex is error");
             }
-            int len = 0;
-            byte[] buf = new byte[1024];
-            len = inputStream.read(buf, 0, 1024);
-            if (len < 0) {
-                throw new StorageException("Failed to store empty file " + filename);
-            }
-            if (filename.contains("..")) {
-                // This is a security check
-                throw new StorageException(
-                        "Cannot store file with relative path outside current directory "
-                                + filename);
-            }
-            Files.copy(inputStream, this.rootLocation.resolve(filename),
-                    StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + filename, e);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

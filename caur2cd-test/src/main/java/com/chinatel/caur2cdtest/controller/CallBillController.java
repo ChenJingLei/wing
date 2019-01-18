@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("call-bill")
+@RequestMapping("/api/call-bill")
 public class CallBillController {
 
     private static final Log log = LogFactory.getLog(CallBillController.class);
@@ -35,6 +37,11 @@ public class CallBillController {
         }
 
         return "success";
+    }
+
+    @RequestMapping(value = "/getall", method = RequestMethod.GET)
+    public List<CallBill> getAll(){
+        return callBillRepository.findAll();
     }
 
 }

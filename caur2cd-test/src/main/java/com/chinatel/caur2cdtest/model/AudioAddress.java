@@ -17,4 +17,6 @@ public class AudioAddress {
     private String chargeNbr;
     private String voiceAddress;
 
+    private String filename;
+
 }
