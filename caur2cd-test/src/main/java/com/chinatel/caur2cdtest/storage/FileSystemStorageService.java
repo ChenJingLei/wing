@@ -62,7 +62,7 @@ public class FileSystemStorageService implements StorageService {
             Matcher m = Pattern.compile(".*/").matcher(filename);
             if (m.find()) {
                 String folder = m.group(0);
-                File dir = new File(this.rootLocation + "/" + folder);
+                File dir = new File(this.rootLocation + folder);
                 if (!dir.exists()) {
                     dir.mkdirs();
                 }
