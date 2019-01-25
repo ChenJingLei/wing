@@ -59,31 +59,28 @@ public class FileSystemStorageService implements StorageService {
     @Override
     public void store(InputStream inputStream, String filename) {
         try {
-            Matcher m = Pattern.compile(".*/").matcher(filename);
-            if (m.find()) {
-                String folder = m.group(0);
-                File dir = new File(this.rootLocation + folder);
-                if (!dir.exists()) {
-                    dir.mkdirs();
-                }
-                int len = 0;
-                byte[] buf = new byte[1024];
-                len = inputStream.read(buf, 0, 1024);
-                if (len < 0) {
-                    throw new StorageException("Failed to store empty file " + filename);
-                }
-                if (filename.contains("..")) {
-                    // This is a security check
-                    throw new StorageException(
-                            "Cannot store file with relative path outside current directory "
-                                    + filename);
-                }
-                Files.copy(inputStream, this.rootLocation.resolve(filename),
-                        StandardCopyOption.REPLACE_EXISTING);
-            } else {
-                log.error("Regex is error");
-                throw new Exception("Regex is error");
+//            Matcher m = Pattern.compile(".*/").matcher(filename);
+//            if (m.find()) {
+//                String folder = m.group(0);
+            File dir = new File(this.rootLocation.resolve(filename).toString());
+            if (!dir.exists()) {
+                dir.mkdirs();
             }
+            if (inputStream.available() == 0) {
+                throw new StorageException("Failed to store empty file " + filename);
+            }
+            if (filename.contains("..")) {
+                // This is a security check
+                throw new StorageException(
+                        "Cannot store file with relative path outside current directory "
+                                + filename);
+            }
+            Files.copy(inputStream, this.rootLocation.resolve(filename),
+                    StandardCopyOption.REPLACE_EXISTING);
+//            } else {
+//                log.error("Regex is error");
+//                throw new Exception("Regex is error");
+//            }
         } catch (IOException e) {
             throw new StorageException("Failed to store file " + filename, e);
         } catch (Exception e) {
