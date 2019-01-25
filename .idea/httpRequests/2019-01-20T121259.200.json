@@ -1,0 +1,36 @@
+{
+  "objectSummaries": [
+    {
+      "bucketName": "record-f90b67cf-1189-4aa4-a43f-8d0098f8b7da-1547832682947",
+      "key": "index.html",
+      "size": 31947,
+      "lastModified": "2019-01-19T05:55:50.110+0000",
+      "storageClass": "STANDARD",
+      "owner": {
+        "displayName": "陈靖磊",
+        "id": "cjl4565@163.com"
+      },
+      "etag": "12867f4a6c1f7a5541f4fd649e029e9e"
+    },
+    {
+      "bucketName": "record-f90b67cf-1189-4aa4-a43f-8d0098f8b7da-1547832682947",
+      "key": "resource/n3/1/86/775567289.mp3",
+      "size": 618095,
+      "lastModified": "2019-01-18T17:33:58.592+0000",
+      "storageClass": "STANDARD",
+      "owner": {
+        "displayName": "陈靖磊",
+        "id": "cjl4565@163.com"
+      },
+      "etag": "1a7f5beed9dbc0de8aeab3fe5d45dce2"
+    }
+  ],
+  "commonPrefixes": [],
+  "bucketName": "record-f90b67cf-1189-4aa4-a43f-8d0098f8b7da-1547832682947",
+  "nextMarker": null,
+  "prefix": null,
+  "marker": null,
+  "maxKeys": 1000,
+  "delimiter": null,
+  "truncated": false
+}

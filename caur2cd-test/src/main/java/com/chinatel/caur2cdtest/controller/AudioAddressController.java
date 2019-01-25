@@ -73,7 +73,6 @@ public class AudioAddressController {
                         throw new Exception("upload file to OOS is error");
                     }
 
-
                 } else {
 //                    log.error("download file is error");
                     throw new Exception("download file is error");
@@ -86,7 +85,7 @@ public class AudioAddressController {
 
         } catch (Exception e) {
             log.error(e.getMessage());
-            return "fail";
+            return "fail:" + e.getMessage();
         }
 
         return "success";

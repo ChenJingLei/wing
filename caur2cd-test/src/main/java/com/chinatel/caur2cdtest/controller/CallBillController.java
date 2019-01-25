@@ -32,15 +32,15 @@ public class CallBillController {
 
 
         } catch (Exception e) {
-
-            return "fail";
+            log.error(e.getMessage());
+            return "fail:" + e.getMessage();
         }
 
         return "success";
     }
 
     @RequestMapping(value = "/getall", method = RequestMethod.GET)
-    public List<CallBill> getAll(){
+    public List<CallBill> getAll() {
         return callBillRepository.findAll();
     }
 

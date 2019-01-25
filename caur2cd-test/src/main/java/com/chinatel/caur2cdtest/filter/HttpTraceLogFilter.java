@@ -105,6 +105,7 @@ public class HttpTraceLogFilter extends OncePerRequestFilter implements Ordered 
                         Charset.forName(wrapper.getCharacterEncoding()));
             } catch (Exception e) {
                 // NOOP
+                log.error("request: " + e.getMessage());
             }
         }
         return requestBody;
@@ -119,6 +120,7 @@ public class HttpTraceLogFilter extends OncePerRequestFilter implements Ordered 
                         Charset.forName(wrapper.getCharacterEncoding()));
             } catch (Exception e) {
                 // NOOP
+                log.error("response:" + e.getMessage());
             }
         }
         return responseBody;

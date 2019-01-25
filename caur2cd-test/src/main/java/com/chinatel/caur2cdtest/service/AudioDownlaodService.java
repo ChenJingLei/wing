@@ -74,13 +74,14 @@ public class AudioDownlaodService {
             }
 
         } catch (Exception e) {
+            log.error(e.getMessage());
             e.printStackTrace();
         } finally {
             try {
                 if (inputStream != null) inputStream.close();
             } catch (IOException e) {
                 e.printStackTrace();
-                System.err.println("数据流关闭异常！");
+                log.error("数据流关闭异常！" + e.getMessage());
             }
         }
         return filename;
