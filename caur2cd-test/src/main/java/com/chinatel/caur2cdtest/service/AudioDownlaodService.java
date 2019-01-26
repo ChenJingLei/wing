@@ -5,7 +5,6 @@ import com.chinatel.caur2cdtest.storage.StorageProperties;
 import com.chinatel.caur2cdtest.storage.StorageService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.tomcat.util.http.fileupload.FileItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
@@ -14,15 +13,10 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -55,7 +49,7 @@ public class AudioDownlaodService {
     /**
      * @param url       the download address
      * @param chargeNbr the rootfolder
-     * @return
+     * @return filename
      */
     public String download(String url, String chargeNbr) {
         InputStream inputStream = null;
