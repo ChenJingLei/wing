@@ -1,3 +1,50 @@
+POST http://localhost:8092/oauth/token
+Content-Type: application/json;charset=UTF-8
+
+{     "username":"user",     "password","1",     "grant_type","password" }
+
+<> 2019-02-08T090540.401.json
+
+###
+
+POST http://localhost:8092/oauth/token
+
+{     "username":"user",     "password","1",     "grant_type","password" }
+
+<> 2019-02-08T011627.401.json
+
+###
+
+POST http://localhost:8092/oauth/token
+
+{     "username":"user",     "password","1",     "grant_type","password" }
+
+<> 2019-02-08T011620.401.json
+
+###
+
+POST http://localhost:8092/oauth/token
+
+<> 2019-02-08T011523.401.json
+
+###
+
+POST http://localhost:8092/oauth/token
+
+<> 2019-02-08T011513.401.json
+
+###
+
+GET http://localhost:8092/oauth/authorize
+
+<> 2019-02-08T125324.401.json
+
+###
+
+GET http://localhost:8092/{%20/oauth/authorize}
+
+###
+
 POST http://localhost:8000/api/oos-ctyun/listobjects
 Accept: */*
 Cache-Control: no-cache
@@ -646,101 +693,6 @@ Content-Type: application/json;charset=UTF-8
 }
 
 <> 2019-01-19T032035.200.json
-
-###
-
-POST http://localhost:8000/api/oos-ctyun/listobjectsbyprefix/
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json;charset=UTF-8
-
-{
-  "bucketName":"",
-  "prefix":"",
-  "marker":"",
-  "delimiter":"",
-  "maxKeys":""
-}
-
-<> 2019-01-19T031856.400.json
-
-###
-
-POST http://localhost:8000/api/oos-ctyun/listobjectsbyprefix/
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json;charset=UTF-8
-
-{
-  "prefix": "resource/"
-}
-
-<> 2019-01-19T031744.400.json
-
-###
-
-POST http://localhost:8000/api/oos-ctyun/listobjectsbyprefix/
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json;charset=UTF-8
-
-{
-  "prefix": "resource/"
-}
-
-<> 2019-01-19T031622.400.json
-
-###
-
-POST http://localhost:8000/api/oos-ctyun/listobjectsbyprefix/
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json;charset=UTF-8
-
-{
-  "prefix": "resource/"
-}
-
-<> 2019-01-19T031543.400.json
-
-###
-
-POST http://localhost:8000/api/oos-ctyun/listobjectsbyprefix/
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json;charset=UTF-8
-
-{
-  "prefix": "resource/"
-}
-
-<> 2019-01-19T031224.200.json
-
-###
-
-POST http://localhost:8000/api/oos-ctyun/listobjectsbyprefix/
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json;charset=UTF-8
-
-{
-  "prefix": "resource/"
-}
-
-<> 2019-01-19T030410.200.json
-
-###
-
-POST http://localhost:8000/api/oos-ctyun/listobjectsbyprefix/
-Accept: */*
-Cache-Control: no-cache
-Content-Type: application/json;charset=UTF-8
-
-{
-  "prefix": "resource/"
-}
-
-<> 2019-01-19T030154.200.json
 
 ###
 
